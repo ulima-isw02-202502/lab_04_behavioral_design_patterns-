@@ -1,17 +1,22 @@
-## Laboratorio de Ingeniería de Software 2
+# Laboratorio 04: Patrones de Comportamiento (Command y Strategy)
 
-### Patrones de Comportamiento: Command y Strategy
-
-**Duración:** 1 hora | **Modalidad:** Individual
+- **Curso**: Ingeniería de Software II
+- **Aula**: 851
+- **Fecha**: 10/10/2025
+- **Jefe de prácticas**: Sebastián Chávarry
 
 ---
 
-### Contexto del Caso: Sistema de Cocina Inteligente "QuickServe"
+### Contexto del Caso: Sistema de Restaurante "QuickServe"
 
-El restaurante QuickServe necesita modernizar la comunicación entre los meseros y la cocina. Actualmente, los meseros deben conocer todos los detalles específicos de preparación para cada tipo de orden, lo que genera confusión y errores.
+El restaurante QuickServe necesita modernizar dos aspectos críticos de su operación: la comunicación entre meseros y cocina, y el procesamiento de pagos. Actualmente, ambos procesos generan confusión y errores debido a la falta de estandarización.
+
+---
+
+### Ejercicio 1 - Patrón Command (45 minutos)
 
 **Situación Actual:**
-Los meseros manejan tres tipos principales de órdenes que requieren diferentes procesos en la cocina:
+Los meseros deben conocer todos los detalles específicos de preparación para cada tipo de orden que envían a la cocina:
 
 1. **Platos principales**: Requieren lista de ingredientes y tiempo de cocción específico
 2. **Bebidas calientes**: Necesitan tipo de bebida y temperatura exacta de calentamiento
@@ -27,12 +32,6 @@ Cada vez que se agrega un nuevo tipo de orden o cambian los procesos de cocina, 
 **Objetivo:**
 Crear un sistema donde los meseros puedan enviar órdenes a la cocina sin conocer los detalles internos de preparación, usando un mecanismo uniforme para todos los tipos de órdenes.
 
----
-
-### Ejercicio - Patrón Command (45 minutos)
-
-Implemente el patrón Command para encapsular las diferentes órdenes que los meseros envían a la cocina. Cada tipo de orden debe ser un comando independiente que contenga toda la información necesaria para su ejecución.
-
 **Requerimientos:**
 
 1. Crear una interfaz `Command` con el método `execute()`
@@ -45,17 +44,19 @@ Implemente el patrón Command para encapsular las diferentes órdenes que los me
 
 ### Ejercicio 2 - Patrón Strategy (15 minutos)
 
-El restaurante QuickServe necesita procesar diferentes métodos de pago al final del servicio. Actualmente, el cajero debe conocer los procedimientos específicos para cada tipo de pago, lo que genera confusión y errores.
-
 **Situación Actual:**
-Los clientes pueden pagar con tres métodos diferentes:
+Los cajeros deben conocer los procedimientos específicos para procesar cada tipo de pago al final del servicio:
 
 1. **Efectivo**: Proceso simple, solo verificar el monto exacto
 2. **Tarjeta**: Requiere validación del número de tarjeta y comunicación con el banco
 3. **Pago móvil**: Necesita validar la aplicación (PayPal, Yape, etc.) y número de teléfono
 
 **Problema:**
-Cada método de pago tiene su propia lógica de procesamiento, pero el sistema actual usa múltiples `if-else` que hacen el código difícil de mantener. Cuando se agregan nuevos métodos de pago, hay que modificar el código principal.
+Cada método de pago tiene su propia lógica de procesamiento, pero el sistema actual usa múltiples `if-else` que hacen el código difícil de mantener. Esto genera:
+
+- Código complejo y difícil de mantener
+- Dificultad para agregar nuevos métodos de pago
+- Violación del principio Abierto/Cerrado
 
 **Objetivo:**
 Crear un sistema donde se pueda cambiar dinámicamente el método de pago sin modificar el código de la cuenta, usando diferentes estrategias de procesamiento.
