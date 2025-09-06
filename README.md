@@ -13,61 +13,15 @@ El restaurante QuickServe necesita modernizar dos aspectos críticos de su opera
 
 ---
 
-### Ejercicio 1 - Patrón Command (45 minutos)
+### Ejercicio 1 - Gestión de Órdenes de Cocina (45 minutos)
 
-**Situación Actual:**
-Los meseros deben conocer todos los detalles específicos de preparación para cada tipo de orden que envían a la cocina:
-
-1. **Platos principales**: Requieren lista de ingredientes y tiempo de cocción específico
-2. **Bebidas calientes**: Necesitan tipo de bebida y temperatura exacta de calentamiento
-3. **Postres**: Requieren tipo de postre y especificaciones de decoración
-
-**Problema:**
-Cada vez que se agrega un nuevo tipo de orden o cambian los procesos de cocina, los meseros deben aprender nuevos procedimientos. Esto genera:
-
-- Errores en las órdenes por falta de conocimiento técnico
-- Tiempo perdido explicando procesos a nuevos meseros
-- Dificultad para mantener consistencia en la preparación
-
-**Objetivo:**
-Crear un sistema donde los meseros puedan enviar órdenes a la cocina sin conocer los detalles internos de preparación, usando un mecanismo uniforme para todos los tipos de órdenes.
-
-**Requerimientos:**
-
-1. Crear una interfaz `Command` con el método `execute()`
-2. Implementar comandos concretos para cada tipo de orden
-3. Crear una clase `Cocina` que procese las órdenes
-4. Crear una clase `Mesero` que gestione y ejecute los comandos
-5. Demostrar el funcionamiento con diferentes tipos de órdenes
+En el restaurante QuickServe, los meseros deben comunicar órdenes específicas a la cocina, pero cada tipo de preparación requiere información diferente: los platos principales necesitan una lista de ingredientes y tiempo de cocción, las bebidas calientes requieren el tipo de bebida y temperatura exacta, mientras que los postres necesitan especificar el tipo y decoración deseada. Actualmente, los meseros deben conocer todos estos detalles técnicos para cada preparación, lo que genera errores constantes y dificulta la incorporación de nuevos elementos al menú. Se necesita un sistema donde los meseros puedan enviar cualquier tipo de orden a la cocina de manera uniforme, sin conocer los procedimientos específicos de preparación.
 
 ---
 
-### Ejercicio 2 - Patrón Strategy (15 minutos)
+### Ejercicio 2 - Sistema de Procesamiento de Pagos (15 minutos)
 
-**Situación Actual:**
-Los cajeros deben conocer los procedimientos específicos para procesar cada tipo de pago al final del servicio:
-
-1. **Efectivo**: Proceso simple, solo verificar el monto exacto
-2. **Tarjeta**: Requiere validación del número de tarjeta y comunicación con el banco
-3. **Pago móvil**: Necesita validar la aplicación (PayPal, Yape, etc.) y número de teléfono
-
-**Problema:**
-Cada método de pago tiene su propia lógica de procesamiento, pero el sistema actual usa múltiples `if-else` que hacen el código difícil de mantener. Esto genera:
-
-- Código complejo y difícil de mantener
-- Dificultad para agregar nuevos métodos de pago
-- Violación del principio Abierto/Cerrado
-
-**Objetivo:**
-Crear un sistema donde se pueda cambiar dinámicamente el método de pago sin modificar el código de la cuenta, usando diferentes estrategias de procesamiento.
-
-**Requerimientos:**
-
-1. Crear una interfaz `MetodoPago` con el método `procesar(monto)`
-2. Implementar estrategias concretas para cada método de pago
-3. Crear una clase `Cuenta` que use la estrategia seleccionada
-4. Crear una clase `CajeroRestaurante` que gestione los métodos disponibles
-5. Demostrar el funcionamiento cambiando métodos de pago dinámicamente
+En el restaurante QuickServe, los cajeros deben procesar diferentes tipos de pago al finalizar las cuentas de los clientes: efectivo (verificando el monto exacto y calculando cambio), tarjetas (validando el número y conectando con el banco), y pagos móviles (verificando la aplicación específica como PayPal o Yape y el número de teléfono). Cada método tiene procedimientos completamente diferentes, y cuando se quiere agregar un nuevo método de pago, el sistema de caja requiere modificaciones extensas. Se necesita un sistema que permita cambiar dinámicamente el método de procesamiento de pago sin alterar la lógica principal de facturación.
 
 ---
 
